@@ -4,13 +4,13 @@ public class PublishingRetailer {
     private final int ID;
     private final String name;
     private ArrayList<IPublishingArtifact> publishingArtifacts;
-    private ArrayList<Integer> countries;
+    private ArrayList<Countries> countries;
 
     public PublishingRetailer(int ID, String name) {
         this.ID = ID;
         this.name = name;
         this.publishingArtifacts = new ArrayList<IPublishingArtifact>();
-        this.countries = new ArrayList<Integer>();
+        this.countries = new ArrayList<Countries>();
     }
 
     public int getID() {
@@ -25,7 +25,7 @@ public class PublishingRetailer {
         return publishingArtifacts;
     }
 
-    public ArrayList<Integer> getCountries() {
+    public ArrayList<Countries> getCountries() {
         return countries;
     }
 
@@ -33,7 +33,7 @@ public class PublishingRetailer {
         this.publishingArtifacts.add(publishingArtifact);
     }
 
-    public void addCountry(int countryID) {
-        this.countries.add(countryID);
+    public void addCountry(Countries country) {
+        this.countries.add(country);
     }
 }
