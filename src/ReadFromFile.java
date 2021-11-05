@@ -47,6 +47,15 @@ public class ReadFromFile {
         return null;
     }
 
+    public static Language findLanguageByID(ArrayList<Language> languages, int ID) {
+        for(Language language : languages) {
+            if(language.getID() == ID) {
+                return language;
+            }
+        }
+        return null;
+    }
+
     public static ArrayList<Book> initBooks() throws IOException {
         ArrayList<Book> books = new ArrayList<Book>();
 
@@ -303,7 +312,35 @@ public class ReadFromFile {
 
     public static void initPublishingRetailerEditorialGroups(ArrayList<PublishingRetailer> publishingRetailers, ArrayList<EditorialGroup> editorialGroups) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("init/publishing-retailers-editorial-groups.in"))) {
+            int iter = 0;
+            String line;
 
+            while((line = br.readLine()) != null) {
+                if(iter == 0) {
+                    iter++;
+                    continue;
+                }
+
+                String[] splittedLine = line.split("###");
+                ReadFromFile.findPublishingRetailerByID(publishingRetailers, Integer.parseInt(splittedLine[0])).getPublishingArtifacts().add(ReadFromFile.findEditorialGroupByID(editorialGroups, Integer.parseInt(splittedLine[1])));
+            }
+        }
+    }
+
+    public static void initPublishingRetailersPublishingBrands(ArrayList<PublishingRetailer> publishingRetailers, ArrayList<PublishingBrand> publishingBrands) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader("init/publishing-retailers-publishing-brands.in"))) {
+            int iter = 0;
+            String line;
+
+            while((line = br.readLine()) != null) {
+                if(iter == 0) {
+                    iter++;
+                    continue;
+                }
+
+                String[] splittedLine = line.split("###");
+                ReadFromFile.findPublishingRetailerByID(publishingRetailers, Integer.parseInt(splittedLine[0])).getPublishingArtifacts().add(findPublishingBrandByID(publishingBrands, Integer.parseInt(splittedLine[1])));
+            }
         }
     }
 
@@ -320,6 +357,8 @@ public class ReadFromFile {
         ArrayList<PublishingRetailer> publishingRetailers = ReadFromFile.initPublishingRetailer();
         ReadFromFile.initPublishingRetailerCountries(publishingRetailers, countries);
         ReadFromFile.initPublishingRetailerBooks(publishingRetailers, books);
+        ReadFromFile.initPublishingRetailerEditorialGroups(publishingRetailers, editorialGroups);
+        ReadFromFile.initPublishingRetailersPublishingBrands(publishingRetailers, publishingBrands);
 
         // test initializare books
 //        for(Book book : books) {
@@ -364,17 +403,23 @@ public class ReadFromFile {
 //        }
 
         // test initializare publishing retailers
-        for(PublishingRetailer publishingRetailer : publishingRetailers) {
-            System.out.print(publishingRetailer.getID() + " " + publishingRetailer.getName() + " ");
-            for(Countries country : publishingRetailer.getCountries()) {
-                System.out.print(country.getID() + " ");
-            }
-            for(IPublishingArtifact iPublishingArtifact : publishingRetailer.getPublishingArtifacts()) {
+//        for(PublishingRetailer publishingRetailer : publishingRetailers) {
+//            System.out.print(publishingRetailer.getID() + " " + publishingRetailer.getName() + " ");
+//            for(Countries country : publishingRetailer.getCountries()) {
+//                System.out.print(country.getID() + " ");
+//            }
+//            for(IPublishingArtifact iPublishingArtifact : publishingRetailer.getPublishingArtifacts()) {
 //                if(iPublishingArtifact instanceof Book) {
 //                    System.out.print(((Book) iPublishingArtifact).getName() + "; ");
 //                }
-            }
-            System.out.println();
-        }
+//                if(iPublishingArtifact instanceof EditorialGroup) {
+//                    System.out.print(((EditorialGroup) iPublishingArtifact).getName() + "; ");
+//                }
+//                if(iPublishingArtifact instanceof PublishingBrand) {
+//                    System.out.print(((PublishingBrand) iPublishingArtifact).getName() + "; ");
+//                }
+//            }
+//            System.out.println();
+//        }
     }
 }
