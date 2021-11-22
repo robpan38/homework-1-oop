@@ -2,6 +2,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ReadFromFile {
+    /**
+     * functie folosita pentru a gasi o carte intr-o lista de carti, dupa ID
+     */
     public static Book findBookByID(ArrayList<Book> books, int ID) {
         for(Book book : books) {
             if(book.getID() == ID) {
@@ -11,6 +14,9 @@ public class ReadFromFile {
         return null;
     }
 
+    /**
+     * functie folosita pentru a gasi un grup editorial intr-o lista de grupuri editoriale, dupa ID
+     */
     public static EditorialGroup findEditorialGroupByID(ArrayList<EditorialGroup> editorialGroups, int ID) {
         for(EditorialGroup editorialGroup : editorialGroups) {
             if(editorialGroup.getID() == ID) {
@@ -20,6 +26,9 @@ public class ReadFromFile {
         return null;
     }
 
+    /**
+     * functie folosita pentru a gasi un brand de publicare intr-o lista de branduri de publicare, dupa ID
+     */
     public static PublishingBrand findPublishingBrandByID(ArrayList<PublishingBrand> publishingBrands, int ID) {
         for(PublishingBrand publishingBrand : publishingBrands) {
             if(publishingBrand.getID() == ID) {
@@ -29,6 +38,9 @@ public class ReadFromFile {
         return null;
     }
 
+    /**
+     * functie folosita pentru a gasi un retailer de publicare intr-o lista de retaileri de publicare, dupa ID
+     */
     public static PublishingRetailer findPublishingRetailerByID(ArrayList<PublishingRetailer> publishingRetailers, int ID) {
         for(PublishingRetailer publishingRetailer : publishingRetailers) {
             if(publishingRetailer.getID() == ID) {
@@ -38,6 +50,9 @@ public class ReadFromFile {
         return null;
     }
 
+    /**
+     * functie folosita pentru a gasi o tara intr-o lista de tari, dupa ID
+     */
     public static Countries findCountryByID(ArrayList<Countries> countries, int ID) {
         for(Countries country : countries) {
             if(country.getID() == ID) {
@@ -47,6 +62,9 @@ public class ReadFromFile {
         return null;
     }
 
+    /**
+     * functie folosita pentru a gasi o limba intr-o lista de limbi, dupa ID
+     */
     public static Language findLanguageByID(ArrayList<Language> languages, int ID) {
         for(Language language : languages) {
             if(language.getID() == ID) {
@@ -56,6 +74,9 @@ public class ReadFromFile {
         return null;
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de carti folosind fisierul de input
+     */
     public static ArrayList<Book> initBooks() throws IOException {
         ArrayList<Book> books = new ArrayList<Book>();
 
@@ -88,6 +109,9 @@ public class ReadFromFile {
         return books;
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre carti si autorii lor folosind fisierul de input
+     */
     public static void initBooksAuthors(ArrayList<Book> books) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader("init/books-authors.in"))) {
             int iter = 0;
@@ -108,6 +132,9 @@ public class ReadFromFile {
         }
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de limbi folosind fisierul de input
+     */
     public static ArrayList<Language> initLanguages() throws IOException {
         ArrayList<Language> languages = new ArrayList<Language>();
 
@@ -132,6 +159,9 @@ public class ReadFromFile {
         return languages;
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de autori folosind fisierul de input
+     */
     public static ArrayList<Author> initAuthors() throws IOException {
         ArrayList<Author> authors = new ArrayList<Author>();
 
@@ -154,6 +184,9 @@ public class ReadFromFile {
         return authors;
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de tari folosind fisierul de input
+     */
     public static ArrayList<Countries> initCountries() throws IOException {
         ArrayList<Countries> countries = new ArrayList<Countries>();
 
@@ -176,6 +209,9 @@ public class ReadFromFile {
         return countries;
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de grupuri editoriale folosind fisierul de input
+     */
     public static ArrayList<EditorialGroup> initEditorialGroups() throws IOException {
         ArrayList<EditorialGroup> editorialGroups = new ArrayList<EditorialGroup>();
 
@@ -198,6 +234,9 @@ public class ReadFromFile {
         return editorialGroups;
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre grupurile editoriale si carti lor folosind fisierul de input
+     */
     public static void initEditorialGroupsBooks(ArrayList<EditorialGroup> editorialGroups, ArrayList<Book> books) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader("init/editorial-groups-books.in"))) {
             int iter = 0;
@@ -215,6 +254,9 @@ public class ReadFromFile {
         }
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de branduri de publicare folosind fisierul de input
+     */
     public static ArrayList<PublishingBrand> initPublishingBrands() throws IOException {
         ArrayList<PublishingBrand> publishingBrands = new ArrayList<PublishingBrand>();
 
@@ -237,6 +279,9 @@ public class ReadFromFile {
         return publishingBrands;
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre brandurile de publicare si carti folosind fisierul de input
+     */
     public static void initPublishingBrandsBooks(ArrayList<PublishingBrand> publishingBrands, ArrayList<Book> books) throws IOException {
         try(BufferedReader br = new BufferedReader(new FileReader("init/publishing-brands-books.in"))) {
             int iter = 0;
@@ -254,6 +299,9 @@ public class ReadFromFile {
         }
     }
 
+    /**
+     * functie folosita pentru popularea unei liste de retaileri de publicare folosind fisierul de input
+     */
     public static ArrayList<PublishingRetailer> initPublishingRetailer() throws IOException {
         ArrayList<PublishingRetailer> publishingRetailers = new ArrayList<PublishingRetailer>();
 
@@ -276,6 +324,9 @@ public class ReadFromFile {
         return publishingRetailers;
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre retailerii de publicare si tari folosind fisierul de input
+     */
     public static void initPublishingRetailerCountries(ArrayList<PublishingRetailer> publishingRetailers, ArrayList<Countries> countries) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("init/publishing-retailers-countries.in"))) {
             int iter = 0;
@@ -293,6 +344,9 @@ public class ReadFromFile {
         }
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre retailerii de publicare si carti folosind fisierul de input
+     */
     public static void initPublishingRetailerBooks(ArrayList<PublishingRetailer> publishingRetailers, ArrayList<Book> books) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("init/publishing-retailers-books.in"))) {
             int iter = 0;
@@ -310,6 +364,9 @@ public class ReadFromFile {
         }
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre retailerii de publicare si grupurile editoriale folosind fisierul de input
+     */
     public static void initPublishingRetailerEditorialGroups(ArrayList<PublishingRetailer> publishingRetailers, ArrayList<EditorialGroup> editorialGroups) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("init/publishing-retailers-editorial-groups.in"))) {
             int iter = 0;
@@ -327,6 +384,9 @@ public class ReadFromFile {
         }
     }
 
+    /**
+     * functie folosita pentru stabilirea legaturii dintre retailerii de publicare si brandurile de publicare folosind fisierul de input
+     */
     public static void initPublishingRetailersPublishingBrands(ArrayList<PublishingRetailer> publishingRetailers, ArrayList<PublishingBrand> publishingBrands) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader("init/publishing-retailers-publishing-brands.in"))) {
             int iter = 0;

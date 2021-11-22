@@ -3,7 +3,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Administration {
-
+    /**
+     * primul pas consta in determinarea retailer-ului de publicare pe baza id-ului, parcurgand o lista de retaileri
+     * apoi se ia fiecare instanta a interfetei IPublishingArtifact din lista de artefacte de publicatie a retailer-ului gasit
+     * in cazul in care artefactul este o carte, se introduce in lista de carti care va contine duplicate
+     * in cazul in care artefactul este un brand de publicare, sau un grup editorial, se iau cartile din interiorul acestora si se adauga in lista de carti
+     * inainte de returnarea listei de carti, se elimina duplicatele din lista
+     */
     public static ArrayList<Book> getBooksForPublishingRetailerID(ArrayList<PublishingRetailer> publishingRetailers, int publishingRetailerID) {
         ArrayList<Book> books = new ArrayList<Book>();
         ArrayList<Book> booksWithDuplicates = new ArrayList<Book>();
@@ -212,6 +218,7 @@ public class Administration {
         ReadFromFile.initPublishingRetailersPublishingBrands(publishingRetailers, publishingBrands);
 
         // EXEMPLU 1 <==================================================================>
+        // PENTRU TESTAREA ANUMITEI FUNCTIONALITATI SE DECOMENTEAZA ZONA DE COD CORESPUNZATOARE FUNCTIONALITATII RESPECTIVE
 
         ArrayList<Book> booksOfPublisherRetailer26 = Administration.getBooksForPublishingRetailerID(publishingRetailers, 26);
         ArrayList<Book> booksOfPublisherRetailer27 = Administration.getBooksForPublishingRetailerID(publishingRetailers, 27);
@@ -248,6 +255,7 @@ public class Administration {
 //        }
 
         // EXEMPLU 2 <==================================================================>
+        // PENTRU TESTAREA ANUMITEI FUNCTIONALITATI SE DECOMENTEAZA ZONA DE COD CORESPUNZATOARE FUNCTIONALITATII RESPECTIVE
 
         ArrayList<Book> booksOfPublisherRetailer1 = Administration.getBooksForPublishingRetailerID(publishingRetailers, 1);
         ArrayList<Book> booksOfPublisherRetailer2 = Administration.getBooksForPublishingRetailerID(publishingRetailers, 2);
@@ -284,6 +292,7 @@ public class Administration {
 //        }
 
         // EXEMPLU PENTRU FUNCTIILE PUBLISH <==================================================================>
+        // PENTRU TESTAREA ANUMITEI FUNCTIONALITATI SE DECOMENTEAZA ZONA DE COD CORESPUNZATOARE FUNCTIONALITATII RESPECTIVE
 
         // test publish book + editorial group + publishing brand
 //        for(IPublishingArtifact iPublishingArtifact : publishingRetailers.get(0).getPublishingArtifacts()) {

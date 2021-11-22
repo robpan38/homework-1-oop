@@ -1,0 +1,15 @@
+Pentru rezolvarea temei se prelucreaza fisierele de input cu ajutorul functiilor statice definite in interiorul clasei ReadFromFile.java + comentarii care descriu comportamentul lor
+
+Implementarea functiilor cerute in cerinta se gaseste in fisierul Administration.java + comentarii care descriu comportamentul lor
+
+Clase definite pentru rezolvarea temei:
+    - Author
+    - Book
+    - Countries
+    - EditorialGroup
+    - IPublishingArtifact (interfata)
+    - Language
+    - PublishingBrand
+    - PublishingRetailer
+    - ReadFromFile
+    - Administration
